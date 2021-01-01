@@ -1,3 +1,15 @@
+# Ignite is a website which has to do with pc/ps/xbox games
+
+### Technologies used:
+
+- JavaScript
+- React
+- Redux
+- React Router
+- Styled Components
+- Framer Motion
+- Axios
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -23,7 +23,11 @@ const GameDetail = ({ pathId }) => {
   //Exit Detail
   const exitDetailHander = (e) => {
     const element = e.target;
-    if (element.classList.contains("shadow")) {
+
+    if (
+      element.classList.contains("shadow") ||
+      element.classList.contains("exit")
+    ) {
       document.body.style.overflow = "auto";
       history.push("/");
     }
@@ -67,9 +71,13 @@ const GameDetail = ({ pathId }) => {
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHander}>
           <Detail layoutId={pathId}>
+            <button className="exitDetail" onClick={exitDetailHander}>
+              <i className="fa fa-times exit"></i>
+            </button>
             <Stats>
               <div className="rating">
                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
+
                 <p>Rating: {game.rating}</p>
                 {getStars()}
               </div>
@@ -123,7 +131,7 @@ const CardShadow = styled(motion.div)`
   z-index: 5;
 
   &::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.6rem;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -144,6 +152,27 @@ const Detail = styled(motion.div)`
   left: 10%;
   color: black;
   z-index: 10;
+
+  .exitDetail {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.7rem;
+    border: none;
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
+
+    .exit {
+      cursor: pointer;
+      &:hover {
+        transition: all 0.5s ease-in-out;
+        transform: scale(1.5);
+      }
+    }
+  }
   img {
     width: 100%;
   }
@@ -153,6 +182,7 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   img {
     width: 2rem;
     height: 2rem;
